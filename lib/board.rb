@@ -10,8 +10,10 @@ class Board
   def play(move)
     x, y = convert_move_to_coordinate(move)
     set_value(x, y, @marker)
-    game_over_message if is_win?(@marker)
-    switch_player unless is_win?(@marker)
+    is_win?(@marker) ? game_over_message : switch_player
+  end
+
+  def print_board
   end
 
   def switch_player
