@@ -15,6 +15,8 @@ class Game
     is_win?(@marker) ? game_over_message : switch_player
   end
 
+  private
+
   def switch_player
     @marker == 'X' ? @marker = 'O' : @marker = 'X'
     p "It's #{@marker} turn now"
@@ -35,34 +37,34 @@ class Game
       mapping[move]
   end
 
-
-    def is_win?(marker)
-      winning_positions.each do |position|
-        return true if position == [marker, marker, marker]
-      end
-      false
+  def is_win?(marker)
+    winning_positions.each do |position|
+      return true if position == [marker, marker, marker]
     end
+    false
+  end
 
+  def game_over_message
+    p 'Game is over'
+  end
 
-      def game_over_message
-        p 'Game is over'
-      end
+  def winning_positions
+    horizontal_winning_positions + vertical_winning_positions + diagonal_winning_positions
+  end
 
+  def horizontal_winning_positions
+    @board.grid.map { |row| row[0..2] }
+  end
 
-    def winning_positions
-      [
-        [@board.grid[0][0], @board.grid[0][1], @board.grid[0][2]],
-        [@board.grid[1][0], @board.grid[1][1], @board.grid[1][2]],
-        [@board.grid[2][0], @board.grid[2][1], @board.grid[2][2]],
-        [@board.grid[0][0], @board.grid[1][0], @board.grid[2][0]],
-        [@board.grid[0][1], @board.grid[1][1], @board.grid[2][1]],
-        [@board.grid[0][2], @board.grid[1][2], @board.grid[2][2]],
-        [@board.grid[0][0], @board.grid[1][1], @board.grid[2][2]],
-        [@board.grid[0][2], @board.grid[1][1], @board.grid[2][0]],
-      ]
-    end
+  def vertical_winning_positions
+    @board.grid.transpose.map { |row| row[0..2] }
+  end
 
-
-
+  def diagonal_winning_positions
+    [
+      [@board.grid[0][0], @board.grid[1][1], @board.grid[2][2]],
+      [@board.grid[0][2], @board.grid[1][1], @board.grid[2][0]],
+    ]
+  end
 
 end
