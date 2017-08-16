@@ -10,6 +10,7 @@ class Board
   def play(move)
     x, y = convert_move_to_coordinate(move)
     set_value(x, y, @marker)
+    game_over_message if is_win?(@marker)
   end
 
   def switch_player
@@ -42,6 +43,10 @@ class Board
     false
   end
 
+  def game_over_message
+    p 'Game is over'
+  end
+
   def winning_positions
     [
       [@grid[0][0], @grid[0][1], @grid[0][2]],
@@ -51,7 +56,7 @@ class Board
       [@grid[0][1], @grid[1][1], @grid[2][1]],
       [@grid[0][2], @grid[1][2], @grid[2][2]],
       [@grid[0][0], @grid[1][1], @grid[2][2]],
-      [@grid[0][2], @grid[1][1], @grid[2][0]], 
+      [@grid[0][2], @grid[1][1], @grid[2][0]],
     ]
   end
 
