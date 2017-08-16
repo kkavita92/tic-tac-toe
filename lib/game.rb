@@ -16,12 +16,12 @@ class Game
   def start_game
     @print.start_game_message
     @print.get_move_message
-    play(gets.chomp)
+    get_move
   end
 
   def play(move)
     update_board(move)
-    if is_win?(@marker)
+    if game_over?(@marker)
       @print.game_over_message
     else
       switch_player
@@ -61,7 +61,12 @@ class Game
       coordinate_mapping[move]
   end
 
-  def is_win?(marker)
+  def game_over?(marker)
+    return true if got_winner?(marker)
+    false
+  end
+
+  def got_winner?(marker)
     @rules.winning_positions.each do |position|
       return true if position == [marker, marker, marker]
     end
