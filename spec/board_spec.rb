@@ -20,6 +20,12 @@ describe Board do
     expect(board.grid[0][0]).to eq 'X'
   end
 
+  it 'allows alternate player to make a move' do
+    board.switch_player
+    board.play("1")
+    expect(board.grid[0][0]).to eq 'O'
+  end
+
   it 'can set value of grid' do
     board.set_value(1, 1, 'X')
     expect(board.grid[1][1]).to eq 'X'
