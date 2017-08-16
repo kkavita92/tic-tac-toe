@@ -16,5 +16,4 @@ class Board
     @grid[y][x] = move
   end
 
-
 end

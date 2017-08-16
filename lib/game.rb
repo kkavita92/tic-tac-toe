@@ -1,5 +1,6 @@
 require_relative 'board'
 require_relative 'rules'
+require_relative 'printer'
 
 class Game
 
@@ -8,20 +9,21 @@ class Game
   def initialize(board = Board)
     @board = board.new
     @rules = Rules.new(@board)
+    @printer = Printer.new
     @marker = 'X'
   end
 
   def play(move)
     x, y = convert_move_to_coordinate(move)
     @board.set_value(x, y, @marker)
-    is_win?(@marker) ? game_over_message : switch_player
+    is_win?(@marker) ? @printer.game_over_message : switch_player
   end
 
   private
 
   def switch_player
     @marker == 'X' ? @marker = 'O' : @marker = 'X'
-    p "It's #{@marker} turn now"
+    @printer.switch_player_message(@marker)
   end
 
   def convert_move_to_coordinate(move)
@@ -44,10 +46,6 @@ class Game
       return true if position == [marker, marker, marker]
     end
     false
-  end
-
-  def game_over_message
-    p 'Game is over'
   end
 
 end

@@ -4,7 +4,6 @@ class Rules
     @game_board = game_board
   end
 
-
   def winning_positions
     horizontal_winning_positions + vertical_winning_positions + diagonal_winning_positions
   end
@@ -25,6 +24,5 @@ class Rules
       [@game_board.grid[0][2], @game_board.grid[1][1], @game_board.grid[2][0]],
     ]
   end
-
 
 end
