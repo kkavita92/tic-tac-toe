@@ -4,16 +4,16 @@ class Board
 
   def initialize
     @grid = Array.new(3) { Array.new(3, " ") }
-    @mark = 'X'
+    @marker = 'X'
   end
 
   def play(move)
     x, y = convert_move_to_coordinate(move)
-    set_value(x, y, @mark)
+    set_value(x, y, @marker)
   end
 
   def switch_player
-    @mark == 'X' ? @mark = 'O' : @mark = 'X'
+    @marker == 'X' ? @marker = 'O' : @marker = 'X'
   end
 
   def set_value(x, y, move)
@@ -35,12 +35,17 @@ class Board
       mapping[move]
   end
 
+  def is_win?(marker)
+    winning_positions.each do |position|
+      return true if position == [marker, marker, marker]
+    end
+    false
+  end
+
   def winning_positions
     [
       [@grid[0][0], @grid[0][1], @grid[0][2]]
     ]
   end
-
-
 
 end
