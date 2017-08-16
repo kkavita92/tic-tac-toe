@@ -66,14 +66,7 @@ class Game
   end
 
   def game_over?(marker)
-    return true if got_winner?(marker)
-    false
-  end
-
-  def got_winner?(marker)
-    @rules.winning_positions.each do |position|
-      return true if position == [marker, marker, marker]
-    end
+    return true if @rules.got_winner?(marker)
     false
   end
 

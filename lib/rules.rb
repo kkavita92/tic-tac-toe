@@ -4,11 +4,18 @@ class Rules
     @game_board = game_board
   end
 
-  def winning_positions
-    horizontal_winning_positions + vertical_winning_positions + diagonal_winning_positions
+  def got_winner?(marker)
+    winning_positions.each do |position|
+      return true if position == [marker, marker, marker]
+    end
+    false
   end
 
   private
+
+  def winning_positions
+    horizontal_winning_positions + vertical_winning_positions + diagonal_winning_positions
+  end
 
   def horizontal_winning_positions
     @game_board.grid.map { |row| row[0..2] }
