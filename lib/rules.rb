@@ -15,7 +15,7 @@ class Rules
   end
 
   def vertical_winning_positions
-    @game_board.grid.transpose.map { |row| row[0..2] }
+    @game_board.grid.transpose.map { |column| column[0..2] }
   end
 
   def diagonal_winning_positions

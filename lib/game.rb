@@ -14,8 +14,7 @@ class Game
   end
 
   def play(move)
-    x, y = convert_move_to_coordinate(move)
-    @board.set_value(x, y, @marker)
+    update_board(move)
     is_win?(@marker) ? @print.game_over_message : switch_player
   end
 
@@ -26,8 +25,13 @@ class Game
     @print.switch_player_message(@marker)
   end
 
+  def update_board(move)
+    x, y = convert_move_to_coordinate(move)
+    @board.set_value(x, y, @marker)
+  end
+
   def convert_move_to_coordinate(move)
-    mapping = {
+    coordinate_mapping = {
         "1" => [0, 0],
         "2" => [1, 0],
         "3" => [2, 0],
@@ -38,14 +42,13 @@ class Game
         "8" => [1, 2],
         "9" => [2, 2]
       }
-      mapping[move]
+      coordinate_mapping[move]
   end
 
   def is_win?(marker)
     @rules.winning_positions.each do |position|
       return true if position == [marker, marker, marker]
     end
-    false
   end
 
 end
