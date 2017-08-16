@@ -20,4 +20,8 @@ describe Board do
     expect(board.grid[1][1]).to eq 'X'
   end
 
+  it 'can translate move to matching coordinate on grid' do
+    expect(board.convert_move_to_coordinate("1")).to eq [0, 0]
+  end
+
 end
