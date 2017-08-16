@@ -3,7 +3,7 @@ require 'board'
 describe Board do
   subject(:board) { described_class.new }
 
-  describe '3x3 grid' do 
+  describe '3x3 grid' do
     it 'creates grid - array of three arrays representing rows' do
       expect(board.grid.length).to eq 3
     end
@@ -13,6 +13,11 @@ describe Board do
       expect(board.grid[1].length).to eq 3
       expect(board.grid[2].length).to eq 3
     end
+  end
+
+  it 'can set value of grid' do
+    board.set_value(1, 1, 'X')
+    expect(board.grid[1][1]).to eq 'X'
   end
 
 end
