@@ -1,9 +1,10 @@
 require './lib/board'
+require './lib/game'
 
-board = Board.new
-board.play("3")
-board.play("5")
-board.play("7")
+game = Game.new
+game.play("3")
+game.play("5")
+game.play("7")
 
-p board.grid
-p board.print_board
+p game.board.grid
+p game.board.print_board
