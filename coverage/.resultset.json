@@ -1,7 +1,30 @@
 {
   "RSpec": {
     "coverage": {
+      "C:/Users/hp/tictactoe/spec/board_spec.rb": [
+        1,
+        null,
+        1,
+        2,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "C:/Users/hp/tictactoe/lib/board.rb": [
+        1,
+        null,
+        1,
+        null,
+        1,
+        4,
+        null,
+        null,
+        null
+      ]
     },
-    "timestamp": 1502846824
+    "timestamp": 1502847951
   }
 }
