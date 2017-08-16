@@ -6,24 +6,24 @@ class Game
 
   attr_reader :board
 
-  def initialize(board = Board)
+  def initialize(board = Board, rules = Rules, printer = Printer)
     @board = board.new
-    @rules = Rules.new(@board)
-    @printer = Printer.new
+    @rules = rules.new(@board)
+    @print = printer.new
     @marker = 'X'
   end
 
   def play(move)
     x, y = convert_move_to_coordinate(move)
     @board.set_value(x, y, @marker)
-    is_win?(@marker) ? @printer.game_over_message : switch_player
+    is_win?(@marker) ? @print.game_over_message : switch_player
   end
 
   private
 
   def switch_player
     @marker == 'X' ? @marker = 'O' : @marker = 'X'
-    @printer.switch_player_message(@marker)
+    @print.switch_player_message(@marker)
   end
 
   def convert_move_to_coordinate(move)
