@@ -21,12 +21,7 @@ class Game
 
   def play(move)
     update_board(move)
-    if game_over?(@marker)
-      @print.game_over_message
-    else
-      switch_player
-      get_move
-    end
+    update_game(@marker)
   end
 
   private
@@ -44,6 +39,15 @@ class Game
   def update_board(move)
     x, y = convert_move_to_coordinate(move)
     @board.set_value(x, y, @marker)
+  end
+
+  def update_game(last_player)
+    if game_over?(last_player)
+      @print.game_over_message
+    else
+      switch_player
+      get_move
+    end
   end
 
   def convert_move_to_coordinate(move)
