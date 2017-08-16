@@ -17,7 +17,7 @@ class Board
   end
 
   def set_value(x, y, move)
-    @grid[x][y] = move
+    @grid[y][x] = move
   end
 
   def convert_move_to_coordinate(move)
@@ -33,6 +33,12 @@ class Board
         "9" => [2, 2]
       }
       mapping[move]
+  end
+
+  def winning_positions
+    [
+      [@grid[0][0], @grid[0][1], @grid[0][2]]
+    ]
   end
 
 
