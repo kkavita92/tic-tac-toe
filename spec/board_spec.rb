@@ -29,4 +29,8 @@ describe Board do
     expect(board.convert_move_to_coordinate("1")).to eq [0, 0]
   end
 
+  it 'allows player to be switched' do
+    expect(board.switch_player).to eq 'O'
+  end
+
 end

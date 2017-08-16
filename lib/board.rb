@@ -12,6 +12,10 @@ class Board
     set_value(x, y, @mark)
   end
 
+  def switch_player
+    @mark == 'X' ? @mark = 'O' : @mark = 'X'
+  end
+
   def set_value(x, y, move)
     @grid[x][y] = move
   end
