@@ -11,10 +11,12 @@ class Board
     x, y = convert_move_to_coordinate(move)
     set_value(x, y, @marker)
     game_over_message if is_win?(@marker)
+    switch_player unless is_win?(@marker)
   end
 
   def switch_player
     @marker == 'X' ? @marker = 'O' : @marker = 'X'
+    p "It's #{@marker} turn now"
   end
 
   def set_value(x, y, move)
