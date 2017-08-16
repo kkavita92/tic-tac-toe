@@ -1,4 +1,5 @@
 require_relative 'board'
+require_relative 'rules'
 
 class Game
 
@@ -6,6 +7,7 @@ class Game
 
   def initialize(board = Board)
     @board = board.new
+    @rules = Rules.new(@board)
     @marker = 'X'
   end
 
@@ -38,7 +40,7 @@ class Game
   end
 
   def is_win?(marker)
-    winning_positions.each do |position|
+    @rules.winning_positions.each do |position|
       return true if position == [marker, marker, marker]
     end
     false
@@ -46,25 +48,6 @@ class Game
 
   def game_over_message
     p 'Game is over'
-  end
-
-  def winning_positions
-    horizontal_winning_positions + vertical_winning_positions + diagonal_winning_positions
-  end
-
-  def horizontal_winning_positions
-    @board.grid.map { |row| row[0..2] }
-  end
-
-  def vertical_winning_positions
-    @board.grid.transpose.map { |row| row[0..2] }
-  end
-
-  def diagonal_winning_positions
-    [
-      [@board.grid[0][0], @board.grid[1][1], @board.grid[2][2]],
-      [@board.grid[0][2], @board.grid[1][1], @board.grid[2][0]],
-    ]
   end
 
 end

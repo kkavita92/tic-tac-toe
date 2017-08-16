@@ -1,5 +1,6 @@
 require './lib/board'
 require './lib/game'
+require './lib/rules'
 
 game = Game.new
 game.play("1")
