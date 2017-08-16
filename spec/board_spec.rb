@@ -15,6 +15,11 @@ describe Board do
     end
   end
 
+  it 'allows player to make a move' do
+    board.play("1")
+    expect(board.grid[0][0]).to eq 'X'
+  end
+
   it 'can set value of grid' do
     board.set_value(1, 1, 'X')
     expect(board.grid[1][1]).to eq 'X'

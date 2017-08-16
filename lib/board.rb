@@ -4,6 +4,12 @@ class Board
 
   def initialize
     @grid = Array.new(3) { Array.new(3, " ") }
+    @mark = 'X'
+  end
+
+  def play(move)
+    x, y = convert_move_to_coordinate(move)
+    set_value(x, y, @mark)
   end
 
   def set_value(x, y, move)
@@ -24,5 +30,7 @@ class Board
       }
       mapping[move]
   end
+
+
 
 end
