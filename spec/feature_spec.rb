@@ -6,4 +6,4 @@ board.play("5")
 board.play("7")
 
 p board.grid
-p board.is_win?('X')
+p board.print_board

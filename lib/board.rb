@@ -14,6 +14,9 @@ class Board
   end
 
   def print_board
+    @grid.each do |row|
+      puts row.map { |cell| cell == " " ? "-" : cell }.join(" ")
+    end
   end
 
   def switch_player
