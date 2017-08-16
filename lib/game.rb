@@ -13,12 +13,28 @@ class Game
     @marker = 'X'
   end
 
+  def start_game
+    @print.start_game_message
+    @print.get_move_message
+    play(gets.chomp)
+  end
+
   def play(move)
     update_board(move)
-    is_win?(@marker) ? @print.game_over_message : switch_player
+    if is_win?(@marker)
+      @print.game_over_message
+    else
+      switch_player
+      get_move
+    end
   end
 
   private
+
+  def get_move
+    move = gets.chomp
+    play(move)
+  end
 
   def switch_player
     @marker == 'X' ? @marker = 'O' : @marker = 'X'
@@ -49,6 +65,7 @@ class Game
     @rules.winning_positions.each do |position|
       return true if position == [marker, marker, marker]
     end
+    false
   end
 
 end
