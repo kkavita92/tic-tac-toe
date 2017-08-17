@@ -66,7 +66,7 @@ class Game
   end
 
   def game_over?(marker)
-    return true if @rules.got_winner?(marker)
+    return true if @rules.got_winner?(marker) || @rules.got_tie?
     false
   end
 

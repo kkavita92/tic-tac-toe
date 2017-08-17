@@ -11,7 +11,12 @@ class Rules
     false
   end
 
+  def got_tie?
+    @game_board.grid.flatten.all? { |position| position != ' ' }
+  end
+
   private
+
 
   def winning_positions
     horizontal_winning_positions + vertical_winning_positions + diagonal_winning_positions
