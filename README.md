@@ -1,6 +1,13 @@
 # Tic Tac Toe
 
-Practice tech test modelling Tic Tac Toe in Ruby. 
+Practice tech test modelling Tic Tac Toe in Ruby.
+
+## Requirements
+
+* Implement a command line interface that lets the humans play the game by typing commands into the terminal.
+* Players should be able to input their moves.
+* The board should be shown after each move.
+* The game should announce the result of the game when it's over
 
 ## Rules
 

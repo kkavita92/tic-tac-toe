@@ -20,7 +20,7 @@ class Game
   end
 
   def get_player_move(move=gets.chomp)
-    play(move) if validated(move)
+    play(move) if valid_move?(move)
   end
 
   private
@@ -30,9 +30,9 @@ class Game
     update_game(@marker)
   end
 
-  def validated(move)
+  def valid_move?(move)
     x, y = convert_move_to_coordinate(move)
-    @board.check_value == :empty
+    @board.check_value(x, y) == :empty
   end
 
   def switch_player
@@ -47,8 +47,10 @@ class Game
 
   def update_game(last_player)
     if game_over?(last_player)
+      @board.print_board
       @print.game_over_message
     else
+      @board.print_board
       switch_player
       get_player_move
     end
