@@ -17,7 +17,6 @@ class Rules
 
   private
 
-
   def winning_positions
     horizontal_winning_positions + vertical_winning_positions + diagonal_winning_positions
   end

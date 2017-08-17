@@ -16,19 +16,18 @@ class Game
   def start_game
     @print.start_game_message
     @print.get_move_message
-    get_move
+    get_player_move
   end
 
-  def play(move)
-    update_board(move)
-    update_game(@marker)
+  def get_player_move(move=gets.chomp)
+    play(move)
   end
 
   private
 
-  def get_move
-    move = gets.chomp
-    play(move)
+  def play(move)
+    update_board(move)
+    update_game(@marker)
   end
 
   def switch_player
