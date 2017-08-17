@@ -15,7 +15,7 @@ class Game
 
   def start_game
     @print.start_game_message
-    @print.get_move_message
+    @print.get_move_message(@marker)
     get_player_move
   end
 
@@ -37,7 +37,7 @@ class Game
 
   def switch_player
     @marker == 'X' ? @marker = 'O' : @marker = 'X'
-    @print.switch_player_message(@marker)
+    @print.get_move_message(@marker)
   end
 
   def update_board(move)
@@ -48,7 +48,7 @@ class Game
   def update_game(last_player)
     if game_over?(last_player)
       @board.print_board
-      @print.game_over_message
+      @print.game_over_message(last_player)
     else
       @board.print_board
       switch_player
