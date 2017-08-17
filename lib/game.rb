@@ -10,7 +10,7 @@ class Game
     @board = board.new
     @rules = rules.new(@board)
     @print = printer.new
-    @marker = 'X'
+    @marker = :X
   end
 
   def start_game
@@ -36,7 +36,7 @@ class Game
   end
 
   def switch_player
-    @marker == 'X' ? @marker = 'O' : @marker = 'X'
+    @marker == :X ? @marker = :O : @marker = :X
     @print.get_move_message(@marker)
   end
 
