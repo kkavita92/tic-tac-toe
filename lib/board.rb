@@ -16,4 +16,8 @@ class Board
     @grid[y][x] = move
   end
 
+  def check_value(x, y)
+    @grid[y][x] == " " ? :empty : :full
+  end
+
 end

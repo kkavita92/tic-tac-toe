@@ -14,6 +14,7 @@ class Printer
 
   def switch_player_message(player)
     p "It is #{player}'s' turn now"
+    get_move_message
   end
 
 end
