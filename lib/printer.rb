@@ -5,6 +5,12 @@ class Printer
     game_board_diagram
   end
 
+  def game_board_diagram
+    puts '|1|2|3|'
+    puts '|4|5|6|'
+    puts '|7|8|9|'
+  end
+
   def game_ends_with_win_message(player)
     puts "Game is over. #{player} has won."
   end
@@ -22,12 +28,6 @@ class Printer
     puts "That move was not valid."
     puts "The position is taken" #need to do error if doesnt exist
     puts "Pick another move: "
-  end
-
-  def game_board_diagram
-    puts '|1|2|3|'
-    puts '|4|5|6|'
-    puts '|7|8|9|'
   end
 
 end

@@ -62,14 +62,6 @@ class Game
     end
   end
 
-  def declare_result
-    if game_over?(@marker) == :win
-      @print.game_ends_with_win_message(@marker)
-    else
-      @print.game_ends_with_tie_message
-    end
-  end
-
   def convert_move_to_coordinate(move)
     coordinate_mapping = {
         "1" => [0, 0],
@@ -89,6 +81,14 @@ class Game
     return :win if @rules.got_winner?(marker)
     return :tie if  @rules.got_tie?
     false
+  end
+
+  def declare_result
+    if game_over?(@marker) == :win
+      @print.game_ends_with_win_message(@marker)
+    else
+      @print.game_ends_with_tie_message
+    end
   end
 
 end

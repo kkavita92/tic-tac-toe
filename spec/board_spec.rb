@@ -15,28 +15,22 @@ describe Board do
     end
   end
 
-  it 'allows player to make a move' do
-    board.play("1")
-    expect(board.grid[0][0]).to eq 'X'
+  describe '#set_value' do
+    it 'can set value of grid' do
+      board.set_value(1, 1, 'X')
+      expect(board.grid[1][1]).to eq 'X'
+    end
   end
 
-  it 'allows alternate player to make a move' do
-    board.switch_player
-    board.play("1")
-    expect(board.grid[0][0]).to eq 'O'
-  end
+  describe '#check_value' do
+    it 'can check that value of grid is full' do
+      board.set_value(1, 1, :X)
+      expect(board.check_value(1, 1)).to eq :full
+    end
 
-  it 'can set value of grid' do
-    board.set_value(1, 1, 'X')
-    expect(board.grid[1][1]).to eq 'X'
-  end
-
-  it 'can translate move to matching coordinate on grid' do
-    expect(board.convert_move_to_coordinate("1")).to eq [0, 0]
-  end
-
-  it 'allows player to be switched' do
-    expect(board.switch_player).to eq 'O'
+    it 'can check that value of grid is empty' do
+      expect(board.check_value(1, 1)).to eq :empty
+    end
   end
 
 end
