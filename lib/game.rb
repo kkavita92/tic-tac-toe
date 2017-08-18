@@ -13,14 +13,15 @@ class Game
     @marker = :X
   end
 
-  def start_game
+  def start
     @print.start_game_message
     @print.get_move_message(@marker)
     get_player_move
   end
 
   def get_player_move(move=gets.chomp)
-    play(move) if valid_move?(move)
+    return invalidate_move unless valid_move?(move)
+    play(move)
   end
 
   private
@@ -33,6 +34,11 @@ class Game
   def valid_move?(move)
     x, y = convert_move_to_coordinate(move)
     @board.check_value(x, y) == :empty
+  end
+
+  def invalidate_move
+    @print.invalid_move_message
+    get_player_move
   end
 
   def switch_player
@@ -48,11 +54,19 @@ class Game
   def update_game(last_player)
     if game_over?(last_player)
       @board.print_board
-      @print.game_over_message(last_player)
+      declare_result
     else
       @board.print_board
       switch_player
       get_player_move
+    end
+  end
+
+  def declare_result
+    if game_over?(@marker) == :win
+      @print.game_ends_with_win_message(@marker)
+    else
+      @print.game_ends_with_tie_message
     end
   end
 
@@ -72,7 +86,8 @@ class Game
   end
 
   def game_over?(marker)
-    return true if @rules.got_winner?(marker) || @rules.got_tie?
+    return :win if @rules.got_winner?(marker)
+    return :tie if  @rules.got_tie?
     false
   end
 
