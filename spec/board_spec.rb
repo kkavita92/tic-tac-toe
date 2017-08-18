@@ -17,8 +17,8 @@ describe Board do
 
   describe '#set_value' do
     it 'can set value of grid' do
-      board.set_value(1, 1, 'X')
-      expect(board.grid[1][1]).to eq 'X'
+      board.set_value(1, 1, :X)
+      expect(board.grid[1][1]).to eq :X
     end
   end
 

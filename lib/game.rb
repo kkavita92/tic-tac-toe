@@ -19,7 +19,7 @@ class Game
     get_player_move
   end
 
-  def get_player_move(move=gets.chomp)
+  def get_player_move(move = gets.chomp)
     return invalidate_move unless valid_move?(move)
     play(move)
   end

@@ -7,8 +7,10 @@ class Board
   end
 
   def print_board
+    puts '__ __ __'
     @grid.each do |row|
-      puts row.map { |cell| cell == " " ? "-" : cell }.join(" ")
+      puts row.map { |cell| cell == " " ? "-" : cell }.join(" |")
+      puts '__ __ __'
     end
   end
 
