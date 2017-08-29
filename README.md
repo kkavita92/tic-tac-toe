@@ -22,3 +22,7 @@ Practice tech test modelling Tic Tac Toe in Ruby.
 ## My Process
 
 ## Reflection
+
+## Pending
+
+* Extract `marker` into Player class
