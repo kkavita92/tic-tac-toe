@@ -20,3 +20,5 @@ Practice tech test modelling Tic Tac Toe in Ruby.
 * A game is over when all fields are taken
 
 ## My Process
+
+## Reflection
